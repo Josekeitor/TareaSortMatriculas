@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import sun.awt.image.ImageWatched;
 
 import java.io.*;
+import java.util.ArrayList;
 
 
 /**
@@ -227,6 +228,7 @@ public class Main extends Application {
     private void deleteStudent(){
         Student s = students.getSelectionModel().getSelectedItem();
 
+        studentLinkedList.removeAt(studentLinkedList.find(s));
         studentItems.remove(s);
     }
     private void resetText(){
@@ -257,23 +259,31 @@ public class Main extends Application {
 
             alert.showAndWait();
         }
-
+        studentLinkedList.setElementAt(studentLinkedList.find(s1), s);
         studentItems.set(studentItems.indexOf(s1), s);
     }
 
     public static void main(String[] args){
         LinkedList<Student> list = new LinkedList<>();
         Student s = new Student();
+        Student s1 = new Student();
         try{
             s.setGrade("100");
             s.setName("JC");
             s.setIdNumber("1");
+
+            s1.setGrade("100");
+            s1.setName("JC");
+            s1.setIdNumber("1");
         }catch (EmptyFieldException efe){
             System.out.println(efe.getMessage());
         }
-
+        list.insertAtStart(s1);
         list.insertAtStart(s);
         list.print();
+        System.out.println(list.find(s1));
+        System.out.println(list.find(s));
+
         launch();
 
     }

@@ -314,5 +314,14 @@ public ArrayList<T> toArrayList(){
     return list;
 }
 
-
+public int find(T element){
+    int i=0;
+    while (i<size()){
+        if(getElementAt(i).equals(element)){
+            break;
+        }
+        i++;
+    }
+    return i;
+}
 }
